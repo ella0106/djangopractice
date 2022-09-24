@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Photo App</title>
+    </head>
+    <body>
+  
+        <section>
+            <div>
+                <h2>New Photo</h2>
+                <form method="POST">
+                    {% csrf_token %} {{ form.as_p }}
+                    <!-- csrf토큰은 form 작성시 보안 토큰 -->
+                    <!-- form as p는 form을 태그 형식으로 만들어줌 -->
+                    <button type="submit">완료!</button>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>
