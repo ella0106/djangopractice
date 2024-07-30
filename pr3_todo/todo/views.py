@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .models import Todo
-from .forms import TodoForm
+from .forms import TodoForm, VideoForm
 
 
 def todo_list(request):
@@ -48,3 +49,19 @@ def todo_edit(request, pk):
     else:
         form = TodoForm(instance=todo)
     return render(request, 'todo/todo_post.html', {'form': form})
+
+
+def upload_video(request):
+    if request.method == 'POST':
+        form = VideoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('upload_success')  # 업로드 후 이동할 페이지
+    else:
+        form = VideoForm()
+    return render(request, 'todo/upload.html', {
+        'form': form
+    })
+
+def upload_success(request):
+    return HttpResponse("File uploaded successfully")

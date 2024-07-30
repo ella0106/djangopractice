@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1v%^cr)bx@yevump*j*mqbg5pj4-5r^x52@9q#d*ojq(!9-45$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,6 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',  # 외부 데이터베이스 서버 사용 시 IP 주소
+        'PORT': '1130',       # 데이터베이스 포트
     }
 }
 
@@ -118,6 +122,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+import os 
 
 STATIC_URL = '/static/'
 
@@ -125,3 +130,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
