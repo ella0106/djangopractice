@@ -1,2 +1,11 @@
+myvenv/
 __pycache__/
 .pyc
+db.sqlite3
+media/
+.DS_Store
+.vscode/
+.env
+*.py[cod]
+
+key.txt
